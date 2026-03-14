@@ -1,7 +1,7 @@
-"""
-Simple CNN Model for MNIST Classification
-"""
 
+#Simple CNN Model for MNIST Classification
+
+#importing libraries
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
@@ -18,14 +18,14 @@ class SimpleCNN(nn.Module):
         self.conv2 = nn.Conv2d(32, 64, kernel_size=3, padding=1)
         self.conv3 = nn.Conv2d(64, 64, kernel_size=3, padding=1)
         
-        # Pooling
+        #Pooling
         self.pool = nn.MaxPool2d(2, 2)
         
-        # Fully connected layers
+        #Fully connected layers
         self.fc1 = nn.Linear(64 * 3 * 3, 128)
         self.fc2 = nn.Linear(128, num_classes)
         
-        # Dropout
+        #Dropout
         self.dropout = nn.Dropout(0.5)
     
     def forward(self, x):
@@ -64,3 +64,6 @@ if __name__ == "__main__":
     print(f"Input shape: {x.shape}")
     print(f"Output shape: {output.shape}")
     print(f"Number of parameters: {sum(p.numel() for p in model.parameters())}")
+
+##this is the protoype version and Iplan to improve this CNN a little, though most of the work to be done
+ #are on other files, not this one
