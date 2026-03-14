@@ -1,15 +1,14 @@
-"""
-Synthetic MNIST Digit Generator
-Generates simple geometric digit images for training
-"""
 
+#Generating Synthetic MNIST-like digits using simple geometric shapes
+
+#importing libraries
 import numpy as np
 from PIL import Image, ImageDraw
 import torch
 from torchvision import transforms
 
 class SyntheticMNIST:
-    """Generate synthetic MNIST-like digits using geometric shapes"""
+    #Generate synthetic MNIST-like digits using geometric shapes
     
     def __init__(self, num_samples=50000, img_size=28):
         self.num_samples = num_samples
@@ -18,17 +17,16 @@ class SyntheticMNIST:
         self.labels = []
         
     def generate_digit_0(self):
-        """Generate digit 0 as ellipse/circle"""
+        #Generate digit 0 as ellipse/circle
         img = Image.new('L', (self.img_size, self.img_size), 0)
         draw = ImageDraw.Draw(img)
         
-        # Random variations
+        #Random variations
         thickness = np.random.randint(2, 5)
         center_x = self.img_size // 2 + np.random.randint(-2, 3)
         center_y = self.img_size // 2 + np.random.randint(-2, 3)
         radius_x = np.random.randint(8, 12)
         radius_y = np.random.randint(8, 12)
-        
         # Draw outer ellipse
         draw.ellipse([center_x-radius_x, center_y-radius_y, 
                      center_x+radius_x, center_y+radius_y], 
@@ -55,7 +53,6 @@ class SyntheticMNIST:
             draw.line([x_pos-2, y_start+2, x_pos, y_start], fill=255, width=2)
         
         return img
-    
     def generate_digit_2(self):
         """Generate digit 2 with curves and lines"""
         img = Image.new('L', (self.img_size, self.img_size), 0)
@@ -63,11 +60,11 @@ class SyntheticMNIST:
         
         thickness = np.random.randint(2, 4)
         
-        # Top arc
+        #Top arch
         draw.arc([8, 4, 20, 14], start=180, end=0, fill=255, width=thickness)
-        # Diagonal
+        #Diagonal
         draw.line([20, 10, 8, 22], fill=255, width=thickness)
-        # Bottom line
+        #Bottom line
         draw.line([8, 22, 20, 22], fill=255, width=thickness)
         
         return img
@@ -255,3 +252,8 @@ if __name__ == "__main__":
     generator.save_dataset('test_synthetic.npz')
     print(f"Generated data shape: {data.shape}")
     print(f"Labels shape: {labels.shape}")
+
+"""it was very fun to test with all these possibilities, I specifically left some digits looking worse
+   by Milestone 2, I will work on these digits a lot to make some of them better,
+   Some digits like 0, 1 and 7 already work pretty well!
+"""
