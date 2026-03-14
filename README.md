@@ -34,7 +34,7 @@ synthetic-to-real-mnist/
 
 | Name | Responsibilities |
 |------|-----------------|
-| [Isgandar Jafarli] | Synthetic data generation, model architecture, training pipeline, results analysis, documentation |
+| Isgandar Jafarli | Synthetic data generation, model architecture, training pipeline, results analysis, documentation |
 
 I basically did everything since it is an individual project for me
 
